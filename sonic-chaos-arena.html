@@ -1,5 +1,15 @@
 <meta charset="utf-8">
 <title>Sonic Chaos Arena</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071233">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<script>
+/* Installable app (Xbox Dev Mode / PWA): on Xbox the controller drives the game as a gamepad, not a mouse pointer,
+   and when the game is hosted (not opened from a file) a small service worker keeps a copy for offline play. */
+try { if ('gamepadInputEmulation' in navigator) navigator.gamepadInputEmulation = 'gamepad'; } catch (e) {}
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol) && !/localhost|127\.0\.0\.1/.test(location.hostname)) { addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); }); }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Kanit:ital,wght@1,800;1,900&display=swap">
