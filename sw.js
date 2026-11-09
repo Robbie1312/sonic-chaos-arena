@@ -1,6 +1,6 @@
 // Sonic Chaos Arena service worker: keeps a copy of everything the game has loaded, so it starts fast and works offline.
 // Bump VERSION whenever you upload a new build, so players get the update.
-const VERSION = 'sca-demo-1';
+const VERSION = 'sca-online-1';
 self.addEventListener('install', (e) => { self.skipWaiting(); e.waitUntil(caches.open(VERSION).then((c) => c.addAll(['./', './index.html', './sonic-chaos-arena.html', './manifest.webmanifest', './icon-192.png', './icon-512.png']).catch(() => {}))); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== VERSION).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', (e) => {
